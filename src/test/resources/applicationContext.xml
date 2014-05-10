@@ -24,13 +24,13 @@
 		</property>
 	</bean>
 
-	<bean id="pinusFactoryBean" class="com.pinus.client.PinusFactoryBean"
+	<bean id="salixFactoryBean" class="com.salix.client.SalixFactoryBean"
 		init-method="startup" destroy-method="destroy">
 		<property name="host" value="localhost" />
 		<property name="port" value="9090" />
 	</bean>
-	<bean id="echo" factory-bean="pinusFactoryBean" factory-method="create">
+	<bean id="echo" factory-bean="salixFactoryBean" factory-method="create">
 		<constructor-arg value="echoServiceImpl" />
-		<constructor-arg value="com.pinus.demo.IEchoService" />
+		<constructor-arg value="com.salix.demo.IEchoService" />
 	</bean>
 </beans>

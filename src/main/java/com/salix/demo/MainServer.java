@@ -1,4 +1,4 @@
-package com.pinus.demo;
+package com.salix.demo;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

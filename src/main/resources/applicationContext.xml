@@ -24,10 +24,10 @@
 		</property>
 	</bean>
 
-	<bean id="pinus" class="com.pinus.server.Bootstrap" init-method="startup">
+	<bean id="salix" class="com.salix.server.Bootstrap" init-method="startup">
 		<property name="port" value="9999" />
 	</bean>
 
-	<context:component-scan base-package="com.pinus.demo" />
+	<context:component-scan base-package="com.salix.demo" />
 
 </beans>
