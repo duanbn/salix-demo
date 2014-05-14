@@ -2,14 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-3.0.xsd
-    http://www.springframework.org/schema/aop
-    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
-    http://www.springframework.org/schema/tx 
-    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	xmlns:cutesource="http://blog.csdn.net/cutesource/schema/people"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://blog.csdn.net/cutesource/schema/people http://blog.csdn.net/cutesource/schema/people.xsd">
 
 	<!-- 定义受环境影响易变的变量 -->
 	<bean
@@ -25,9 +23,9 @@
 	</bean>
 
 	<bean id="salixFactoryBean" class="com.salix.client.SalixFactoryBean"
-		init-method="startup" destroy-method="destroy">
+		init-method="startup" destroy-method="shutdown">
 		<property name="host" value="localhost" />
-		<property name="port" value="9090" />
+		<property name="port" value="9999" />
 	</bean>
 	<bean id="echo" factory-bean="salixFactoryBean" factory-method="create">
 		<constructor-arg value="echoServiceImpl" />
