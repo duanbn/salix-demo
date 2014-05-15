@@ -27,11 +27,18 @@ public class MainTest {
 
 	@Test
 	public void test() throws Exception {
-		String value = echoService.echo("hello salix");
-		System.out.println(value);
-		echoService.discard();
-		echoService.discard("discard salix");
+		for (;;) {
+			String value = echoService.echo("hello salix");
+			System.out.println(value);
+			echoService.discard();
+			echoService.discard("discard salix");
+			
+//			Thread.sleep(2000);
+		}
+	}
 
+	@Test
+	public void testConcurrent() throws Exception {
 		List<Thread> list = new ArrayList<Thread>();
 		for (int i = 0; i < 10; i++) {
 			Thread t = new EchoThread(echoService);
