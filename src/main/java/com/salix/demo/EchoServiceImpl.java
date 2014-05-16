@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class EchoServiceImpl implements IEchoService {
 
 	@Override
-	public String echo(String value) {
+	public Object echo(Object value) {
 		return value;
 	}
 

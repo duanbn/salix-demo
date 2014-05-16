@@ -27,14 +27,12 @@ public class MainTest {
 
 	@Test
 	public void test() throws Exception {
-		for (;;) {
-			String value = echoService.echo("hello salix");
-			System.out.println(value);
-			echoService.discard();
-			echoService.discard("discard salix");
-			
-//			Thread.sleep(2000);
-		}
+		byte[] data = new byte[1024 * 1024 * 20];
+
+		Object value = echoService.echo(data);
+		System.out.println(((byte[]) value).length);
+		// echoService.discard();
+		// echoService.discard("discard salix");
 	}
 
 	@Test

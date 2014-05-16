@@ -2,7 +2,7 @@ package com.salix.demo;
 
 public interface IEchoService {
 
-	public String echo(String value);
+	public Object echo(Object value);
 
 	public void discard();
 
