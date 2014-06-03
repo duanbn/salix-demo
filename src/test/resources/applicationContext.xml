@@ -29,6 +29,6 @@
 	</bean>
 	<bean id="echo" factory-bean="salixFactoryBean" factory-method="create">
 		<constructor-arg value="echoServiceImpl" />
-		<constructor-arg value="com.salix.demo.IEchoService" />
+		<constructor-arg value="com.salix.demo.service.IEchoService" />
 	</bean>
 </beans>

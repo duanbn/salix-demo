@@ -1,4 +1,4 @@
-package com.salix.demo;
+package com.salix.demo.service;
 
 import org.springframework.stereotype.Service;
 
