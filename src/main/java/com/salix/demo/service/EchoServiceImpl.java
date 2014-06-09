@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 public class EchoServiceImpl implements IEchoService {
 
 	@Override
-	public Object echo(Object value) {
+	public Object echo(Object value) throws Exception {
+		Thread.sleep(1000);
 		return value;
 	}
 

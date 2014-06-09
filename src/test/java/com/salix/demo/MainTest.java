@@ -54,9 +54,10 @@ public class MainTest extends BaseTest {
 	@Test
 	public void testConcurrent() throws Exception {
 		List<Thread> list = new ArrayList<Thread>();
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 200; i++) {
 			Thread t = new EchoThread(echoService);
 			t.start();
+			Thread.sleep(500);
 			list.add(t);
 		}
 
@@ -80,7 +81,11 @@ public class MainTest extends BaseTest {
 
 		public void run() {
 			for (;;) {
-				System.out.println(this.getName() + "-" + this.echoService.echo(getContent(1000)));
+				try {
+					System.out.println(this.getName() + "-" + this.echoService.echo(getContent(1000)));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
