@@ -9,6 +9,8 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,13 +22,15 @@ import com.salix.server.Shutdown;
 @ContextConfiguration(locations = { "classpath:applicationContext.xml" })
 public class MainTest extends BaseTest {
 
-	@Resource
+	// @Resource(name = "echo")
+	@Autowired
+	@Qualifier("echo")
 	private IEchoService echoService;
 
 	@SuppressWarnings("unchecked")
 	@Test
 	public void test() throws Exception {
-		byte[] data = new byte[1024 * 1024 * 5];
+		byte[] data = new byte[1024 * 5];
 		Object value = echoService.echo(data);
 		System.out.println(((byte[]) value).length);
 
