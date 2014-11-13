@@ -19,11 +19,17 @@ import com.salix.server.Shutdown;
 @ContextConfiguration(locations = { "classpath:applicationContext.xml" })
 public class MainTest extends BaseTest {
 
-	// @Resource(name = "echo")
 	@Autowired
 	private IEchoService echoService;
 
-	@SuppressWarnings("unchecked")
+	@Test
+	public void testAvailable() throws Exception {
+		for (;;) {
+			echoService.discard();
+			// Thread.sleep(100);
+		}
+	}
+
 	@Test
 	public void test() throws Exception {
 		byte[] data = new byte[1024 * 5];

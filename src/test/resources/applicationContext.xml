@@ -22,9 +22,7 @@
 		</property>
 	</bean>
 
-	<salix:client id="democp" host="localhost" port="9999">
-		<salix:service id="echo" name="echoServiceImpl"
-			interface="com.salix.demo.service.IEchoService" />
-	</salix:client>
+	<salix:zookeeper address="127.0.0.1:2181" />
+	<salix:stub name="echoServiceImpl" interface="com.salix.demo.service.IEchoService" />
 
 </beans>
