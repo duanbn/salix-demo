@@ -7,7 +7,7 @@ public class EchoServiceImpl implements IEchoService {
 
 	@Override
 	public Object echo(Object value) throws Exception {
-		Thread.sleep(1000);
+		// Thread.sleep(1000);
 		return value;
 	}
 

@@ -25,7 +25,8 @@ public class MainTest extends BaseTest {
 	@Test
 	public void testAvailable() throws Exception {
 		for (;;) {
-			echoService.discard();
+			Object returnData = echoService.echo(getContent(1000));
+			System.out.println(returnData);
 			// Thread.sleep(100);
 		}
 	}
@@ -60,10 +61,10 @@ public class MainTest extends BaseTest {
 	@Test
 	public void testConcurrent() throws Exception {
 		List<Thread> list = new ArrayList<Thread>();
-		for (int i = 0; i < 200; i++) {
+		for (int i = 0; i < 10; i++) {
 			Thread t = new EchoThread(echoService);
 			t.start();
-			Thread.sleep(500);
+			Thread.sleep(1000);
 			list.add(t);
 		}
 

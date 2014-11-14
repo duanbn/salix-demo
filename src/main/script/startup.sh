@@ -25,4 +25,5 @@ if [ ! -x "$logdir" ]; then
     mkdir "$logdir"
 fi
 
-exec java $opts -cp $classpath $sysargs $main >>$logdir/console.log 2>&1 &
+#exec java $opts -cp $classpath $sysargs $main >>$logdir/console.log 2>&1 &
+exec java $opts -cp $classpath $sysargs $main
