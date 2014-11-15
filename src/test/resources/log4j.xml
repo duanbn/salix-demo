@@ -12,11 +12,11 @@
 	</appender>
 
 	<category name="com.salix">
-		<priority value="debug" />
+		<priority value="info" />
 	</category>
 
 	<root>
-		<priority value="warn" />
+		<priority value="info" />
 		<appender-ref ref="CONSOLE" />
 	</root>
 
