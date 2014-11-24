@@ -38,8 +38,10 @@ public class MainTest extends BaseTest {
 
 	@Test
 	public void testConcurrent() throws Exception {
+        int threadNum = 500;
+
 		List<Thread> list = new ArrayList<Thread>();
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < threadNum; i++) {
 			Thread t = new EchoThread(echoService);
 			t.start();
 			Thread.sleep(1000);
