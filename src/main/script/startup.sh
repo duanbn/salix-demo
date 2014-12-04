@@ -6,11 +6,13 @@ basedir=`cd $basedir/..; pwd;`
 libdir=$basedir/lib
 configdir=$basedir/conf
 
-classpath=$classpath:$libdir/*
 #load config file
 classpath=$classpath:$configdir
+#load jar file
+classpath=$classpath:$libdir/*
 
-main=com.salix.demo.MainServer
+
+main=com.salix.server.Startup
 
 sysargs="-Dsystem.root.path=$basedir"
 opts="-Xms128m"

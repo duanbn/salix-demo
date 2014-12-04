@@ -38,7 +38,7 @@ public class MainTest extends BaseTest {
 
 	@Test
 	public void testConcurrent() throws Exception {
-        int threadNum = 500;
+        int threadNum = 10;
 
 		List<Thread> list = new ArrayList<Thread>();
 		for (int i = 0; i < threadNum; i++) {

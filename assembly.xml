@@ -22,7 +22,7 @@
             <fileMode>755</fileMode>
         </fileSet>
         <fileSet>
-            <directory>src/main/resource</directory>
+            <directory>src/main/resources</directory>
             <outputDirectory>/conf</outputDirectory>
             <includes>
                 <include>*</include>
