@@ -21,7 +21,7 @@ public class BaseTest {
 		testEntity.setTestInt(r.nextInt());
 		testEntity.setTestLong(r.nextLong());
 		testEntity.setTestShort((short) r.nextInt(30000));
-		testEntity.setTestString(getContent(r.nextInt(100)));
+		testEntity.setTestString(getContent(1000));
 		testEntity.setTestTime(new Timestamp(System.currentTimeMillis()));
 		return testEntity;
 	}

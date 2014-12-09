@@ -1,9 +1,7 @@
 package com.salix.demo.service;
 
-import org.springframework.stereotype.Service;
 
-@Service
-public class EchoServiceImpl implements IEchoService {
+public class DubboEchoServiceImpl implements DubboEchoService {
 
 	@Override
 	public Object echo(Object value) throws Exception {

@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,34 +14,55 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.salix.demo.entity.TestEntity;
-import com.salix.demo.service.IEchoService;
+import com.salix.demo.service.DubboEchoService;
+import com.salix.demo.service.SalixEchoService;
 import com.salix.server.Shutdown;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:applicationContext.xml" })
 public class MainTest extends BaseTest {
 
-    public static final Logger LOG = Logger.getLogger(MainTest.class);
+	public static final Logger LOG = Logger.getLogger(MainTest.class);
 
 	@Autowired
-	private IEchoService echoService;
+	private SalixEchoService salixEchoService;
 
-    private Random r = new Random();
+	// @Autowired
+	// private DubboEchoService dubboEchoService;
+
+	private Random r = new Random();
 
 	@Test
 	public void testAvailable() throws Exception {
-		for (;;) {
-            
-        }
+		Map<String, Map<Integer, List<TestEntity>>> map = new HashMap<String, Map<Integer, List<TestEntity>>>();
+		List<TestEntity> list = new ArrayList<TestEntity>();
+		for (int i = 0; i < 100; i++)
+			list.add(createEntity());
+		Map<Integer, List<TestEntity>> map1 = new HashMap<Integer, List<TestEntity>>();
+		map1.put(99, list);
+		map1.put(101, list);
+		map.put("echomap", map1);
+
+		long start = System.currentTimeMillis();
+		for (;;)
+			salixEchoService.echo(getContent(100000));
+		// System.out.println("salix const " + (System.currentTimeMillis() -
+		// start) + "ms");
+
+		// start = System.currentTimeMillis();
+		// for (int i = 0; i < 100; i++)
+		// dubboEchoService.echo(getContent(100000));
+		// System.out.println("dubbo const " + (System.currentTimeMillis() -
+		// start) + "ms");
 	}
 
 	@Test
 	public void testConcurrent() throws Exception {
-        int threadNum = 10;
+		int threadNum = 10;
 
 		List<Thread> list = new ArrayList<Thread>();
 		for (int i = 0; i < threadNum; i++) {
-			Thread t = new EchoThread(echoService);
+			Thread t = new EchoThread(salixEchoService);
 			t.start();
 			Thread.sleep(1000);
 			list.add(t);
@@ -60,32 +80,32 @@ public class MainTest extends BaseTest {
 	}
 
 	class EchoThread extends Thread {
-		private IEchoService echoService;
+		private SalixEchoService echoService;
 
-		public EchoThread(IEchoService echoService) {
+		public EchoThread(SalixEchoService echoService) {
 			this.echoService = echoService;
 		}
 
 		public void run() {
 			for (;;) {
 				try {
-                    Map<String, Map<Integer, List<TestEntity>>> map = new HashMap<String, Map<Integer, List<TestEntity>>>();
-                    List<TestEntity> list = new ArrayList<TestEntity>();
-                    for (int i = 0; i < 12; i++)
-                        list.add(createEntity());
-                    Map<Integer, List<TestEntity>> map1 = new HashMap<Integer, List<TestEntity>>();
-                    map1.put(99, list);
-                    map1.put(101, list);
-                    map.put("echomap", map1);
-                    echoService.echo(map);
+					Map<String, Map<Integer, List<TestEntity>>> map = new HashMap<String, Map<Integer, List<TestEntity>>>();
+					List<TestEntity> list = new ArrayList<TestEntity>();
+					for (int i = 0; i < 12; i++)
+						list.add(createEntity());
+					Map<Integer, List<TestEntity>> map1 = new HashMap<Integer, List<TestEntity>>();
+					map1.put(99, list);
+					map1.put(101, list);
+					map.put("echomap", map1);
+					echoService.echo(map);
 
-                    echoService.echo(getContent(1000));
-                    Thread.sleep(r.nextInt(1000));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+					echoService.echo(getContent(1000));
+					Thread.sleep(r.nextInt(1000));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
 }

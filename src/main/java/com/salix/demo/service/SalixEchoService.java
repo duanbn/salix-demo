@@ -1,6 +1,6 @@
 package com.salix.demo.service;
 
-public interface IEchoService {
+public interface SalixEchoService {
 
 	public Object echo(Object value) throws Exception;
 
