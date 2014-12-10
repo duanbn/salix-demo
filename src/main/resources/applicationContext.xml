@@ -27,11 +27,11 @@
 	<salix:application name="SalixDemo" port="0" />
 	<bean id="salixEchoServiceImpl" class="com.salix.demo.service.SalixEchoServiceImpl" />
 
-	<!-- <dubbo:application name="SalixDemo" />
+	<dubbo:application name="SalixDemo" />
 	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
 	<dubbo:protocol name="dubbo" port="20880" />
 	<dubbo:service interface="com.salix.demo.service.DubboEchoService"
 		ref="dubboEchoService" />
-	<bean id="dubboEchoService" class="com.salix.demo.service.DubboEchoServiceImpl" /> -->
+	<bean id="dubboEchoService" class="com.salix.demo.service.DubboEchoServiceImpl" />
 
 </beans>

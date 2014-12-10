@@ -26,9 +26,9 @@
 	<salix:zookeeper address="127.0.0.1:2181" />
 	<salix:stub name="salixEchoServiceImpl" interface="com.salix.demo.service.SalixEchoService" />
 
-	<!-- <dubbo:application name="SalixDemo" />
+	<dubbo:application name="SalixDemo" />
 	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
 	<dubbo:reference id="dubboEchoService"
-		interface="com.salix.demo.service.DubboEchoService" /> -->
+		interface="com.salix.demo.service.DubboEchoService" />
 
 </beans>

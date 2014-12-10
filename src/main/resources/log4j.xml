@@ -12,7 +12,7 @@
 	</appender>
 
 	<category name="com.salix">
-		<priority value="debug" />
+		<priority value="info" />
 	</category>
 
 	<root>

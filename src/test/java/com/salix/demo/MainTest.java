@@ -27,8 +27,8 @@ public class MainTest extends BaseTest {
 	@Autowired
 	private SalixEchoService salixEchoService;
 
-	// @Autowired
-	// private DubboEchoService dubboEchoService;
+	@Autowired
+	private DubboEchoService dubboEchoService;
 
 	private Random r = new Random();
 
@@ -44,16 +44,14 @@ public class MainTest extends BaseTest {
 		map.put("echomap", map1);
 
 		long start = System.currentTimeMillis();
-		for (;;)
-			salixEchoService.echo(getContent(100000));
-		// System.out.println("salix const " + (System.currentTimeMillis() -
-		// start) + "ms");
+		for (int i = 0; i < 1000; i++)
+			salixEchoService.echo(getContent(10000));
+		System.out.println("salix const " + (System.currentTimeMillis() - start) + "ms");
 
-		// start = System.currentTimeMillis();
-		// for (int i = 0; i < 100; i++)
-		// dubboEchoService.echo(getContent(100000));
-		// System.out.println("dubbo const " + (System.currentTimeMillis() -
-		// start) + "ms");
+		start = System.currentTimeMillis();
+		for (int i = 0; i < 1000; i++)
+			dubboEchoService.echo(getContent(10000));
+		System.out.println("dubbo const " + (System.currentTimeMillis() - start) + "ms");
 	}
 
 	@Test
